@@ -1,0 +1,29 @@
+{
+    "mapTiles":
+    {
+        "bricks":{"width":16,"height":16, "collidable":true},
+        "bush":{"width":16,"height":16, "collidable":false},
+        "collidableBush":{"width":16,"height":16, "collidable":true},
+        "concrete":{"width":16,"height":16, "collidable":true},
+        "metal":{"width":16,"height":16, "collidable":true},
+        "water":{"width":16,"height":16, "collidable":true}
+    },
+    "mapData":
+    [ 
+        "bricks", "bricks", "bricks", "bricks", "bricks", "none", "none", "none","none", "none", "none", "bricks", "none", "none", "none", "bricks",
+        "none", "none", "none", "none", "bricks", "none", "none", "none","none", "none", "none", "bush", "none", "none", "none", "bush",
+        "none", "none", "none", "none", "none", "none", "none", "none","none", "none", "none", "none", "none", "none", "none", "none", 
+        "none", "none", "none", "none", "none", "none", "none", "none","none", "none", "none", "none", "none", "none", "none", "none",
+        "none", "none", "none", "none", "metal", "metal", "none", "none","none", "none", "bush", "bush", "none", "none", "none", "none",
+        "none", "none", "none", "none", "none", "none", "none", "none","none", "none", "none", "none", "none", "none", "none", "none",
+        "concrete", "none", "none", "bush", "none", "none", "none", "concrete","concrete", "none", "none", "none", "water", "none", "none", "bush",
+        "concrete", "none", "bush", "bush", "bush", "none", "none", "metal","metal", "none", "none", "water", "water", "water", "none", "bush",
+        "concrete", "none", "none", "bush", "none", "none", "none", "concrete","concrete", "none", "none", "none", "water", "none", "none", "bush",
+        "none", "none", "none", "none", "none", "none", "none", "none","none", "none", "none", "none", "none", "none", "none", "none",
+        "none", "none", "none", "none", "metal", "metal", "none", "none","none", "none", "bush", "bush", "none", "none", "none", "none",
+        "none", "none", "none", "none", "none", "none", "none", "none","none", "none", "none", "none", "none", "none", "none", "none",
+        "none", "none", "none", "none", "none", "none", "none", "none","none", "none", "none", "none", "none", "none", "none", "none",
+        "bush", "none", "none", "none", "bush", "none", "none", "none","none", "none", "none", "bricks", "none", "none", "none", "none",
+        "bricks", "none", "none", "none", "bricks", "none", "none", "none","none", "none", "none", "bricks", "bricks", "bricks", "bricks", "bricks"
+    ]
+}

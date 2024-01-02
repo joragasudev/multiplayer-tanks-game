@@ -1,0 +1,7 @@
+{
+    "server":{
+        "port":3000,
+        "tick":33,
+        "joystickTick": 1500
+    }
+}

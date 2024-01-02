@@ -1,0 +1,122 @@
+{"frames": [
+    {
+        "filename": "tanks",
+        "frame": {"x":0,"y":0,"w":128,"h":128},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+        "sourceSize": {"w":128,"h":128},
+        "pivot": {"x":0.5,"y":0.5}
+    },
+    {
+        "filename": "powerUps",
+        "frame": {"x":0,"y":64,"w":128,"h":16},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":128,"h":16},
+        "sourceSize": {"w":128,"h":16},
+        "pivot": {"x":0.5,"y":0.5}
+    },
+    {
+        "filename": "bricks",
+        "frame": {"x":0,"y":80,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+        "sourceSize": {"w":16,"h":16},
+        "pivot": {"x":0.5,"y":0.5}
+    },
+    {
+        "filename": "miniBricks",
+        "frame": {"x":0,"y":144,"w":8,"h":8},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":8,"h":8},
+        "sourceSize": {"w":8,"h":8},
+        "pivot": {"x":0,"y":0}
+    },
+    {
+        "filename": "water",
+        "frame": {"x":80,"y":80,"w":48,"h":16},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":48,"h":16},
+        "sourceSize": {"w":48,"h":16},
+        "pivot": {"x":0.5,"y":0.5}
+    },
+    {
+        "filename": "metal",
+        "frame": {"x":0,"y":96,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+        "sourceSize": {"w":16,"h":16},
+        "pivot": {"x":0.5,"y":0.5}
+    },
+    {
+        "filename": "miniMetal",
+        "frame": {"x":0,"y":152,"w":8,"h":8},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":8,"h":8},
+        "sourceSize": {"w":8,"h":8},
+        "pivot": {"x":0,"y":0}
+    },
+    {
+        "filename": "bush",
+        "frame": {"x":80,"y":96,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+        "sourceSize": {"w":16,"h":16},
+        "pivot": {"x":0.5,"y":0.5}
+    },
+    {
+        "filename": "flash",
+        "frame": {"x":0,"y":112,"w":64,"h":16},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":64,"h":16},
+        "sourceSize": {"w":64,"h":16},
+        "pivot": {"x":0.5,"y":0.5}
+    },
+    {
+        "filename": "shield",
+        "frame": {"x":96,"y":112,"w":32,"h":16},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":32,"h":16},
+        "sourceSize": {"w":32,"h":16},
+        "pivot": {"x":0.5,"y":0.5}
+    },
+    {
+        "filename": "explosion",
+        "frame": {"x":0,"y":128,"w":48,"h":16},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":48,"h":16},
+        "sourceSize": {"w":48,"h":16},
+        "pivot": {"x":0.5,"y":0.5}
+    },
+    {
+        "filename": "concrete",
+        "frame": {"x":96,"y":96,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+        "sourceSize": {"w":16,"h":16},
+        "pivot": {"x":0.5,"y":0.5}
+    },
+    {
+        "filename": "proyectile",
+        "frame": {"x":88,"y":144,"w":8,"h":8},
+        "rotated": false,
+        "trimmed": false,
+        "spriteSourceSize": {"x":0,"y":0,"w":8,"h":8},
+        "sourceSize": {"w":8,"h":8},
+        "pivot": {"x":0.5,"y":0.5}
+    }
+
+]
+  
+}

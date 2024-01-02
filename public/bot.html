@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BOT</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/phaser.min.js"></script>
+    <h1 id="bot_status">Tank bot connecting...</h1>
+</head>
+<body>
+    <script type="module">
+    //Simple bot, just for demostration porpuses.
+    import {EVENTS,INPUT_DIRECTIONS,PlayerInput} from '/js/sharedConstants.mjs'
+    
+    const INPUT_SEND_RATE = 1000/30;
+    const DELAY_MIN = 400;
+    const DELAY_MAX = 1500;
+    let socket = null;
+    let timeNOW = Date.now();
+    let timeLAST = timeNOW;
+    let changeDirectionTime = 2000;
+    let changeFireButton = 500;
+    let lastInput = new PlayerInput(INPUT_DIRECTIONS.NONE,false);
+    const directionsArray = [INPUT_DIRECTIONS.UP,INPUT_DIRECTIONS.DOWN,INPUT_DIRECTIONS.RIGHT,INPUT_DIRECTIONS.LEFT]
+    
+    //Socket.io 
+    socket = io('/',{query: {userName:'' }});
+    socket.on('connect',()=>{
+        console.log('Connected to server.')
+        const elem = document.getElementById("bot_status");
+        elem.textContent = `Tank bot connected!. id:${socket.id}`;
+    })
+
+    setInterval(()=>{
+        timeNOW = Date.now();
+        let deltaTime = timeNOW - timeLAST;
+        let input = new PlayerInput(INPUT_DIRECTIONS.NONE,false);
+
+        if (deltaTime > 500) {  
+            changeDirectionTime -= deltaTime
+            changeFireButton -= deltaTime
+
+            if (changeDirectionTime <= 0){
+                input.direction = directionsArray[Math.floor((Math.random() * directionsArray.length))]; 
+                changeDirectionTime = Math.floor((Math.random() * (DELAY_MAX+1-DELAY_MIN)) + DELAY_MIN);
+            }
+            if (changeFireButton <= 0){
+                input.buttonA = Math.random() < 0.5;
+                changeFireButton = 500;
+            }
+        }
+        
+        if(input.direction !== lastInput.direction || input.buttonA !== lastInput.buttonA){
+            socket.emit(EVENTS.PLAYER_INPUT,input);
+            lastInput = input;
+        }
+
+        timeLAST = timeNOW;
+    },INPUT_SEND_RATE) 
+        
+    </script>
+</body>
+</html>

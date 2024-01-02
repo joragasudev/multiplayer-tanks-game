@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanks Game</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/phaser.min.js"></script>
+    <style type="text/css">
+        body {
+            background-color: darkgrey;
+            margin:0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <script type="module">
+    import {renderer} from '/js/renderer.mjs'
+    import {EVENTS,PlayerInput,GAMECFG} from '/js/sharedConstants.mjs'
+
+    let socket = null;
+    let playersUpdate = [];
+    let proyectilesUpdate = [];
+    let powerUpsUpdate = [];
+    let scoresUpdate = [];
+
+    let phaserGame = new Phaser.Game({
+        type: Phaser.AUTO,
+        width: GAMECFG.WORLD_WIDTH + GAMECFG.SCOREBOARD_WIDTH,
+        height: GAMECFG.WORLD_HEIGHT,
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        },
+        pixelArt: true,
+        scale: {
+            mode: Phaser.Scale.FIT,
+        },
+        fps: {
+            target: 60, 
+            forceSetTimeOut: true 
+        }
+    });
+    let cursors = null;
+    let resyncPlayers = false;
+
+    //Phaser preload function. 
+    function preload (){
+        this.load.atlas(renderer.ATLAS.name,renderer.ATLAS.path, renderer.ATLAS.json);
+        this.load.bitmapFont(`${GAMECFG.FONT_NAME}`, `/assets/fonts/${GAMECFG.FONT_NAME}.png`, `/assets/fonts/${GAMECFG.FONT_NAME}.xml`);
+    }
+
+    //Phaser create function.
+    function create(){
+        renderer.createGUI(this);
+        renderer.createGameSprites(this); 
+
+        socket = io('/'); 
+
+        socket.on(EVENTS.CONNECT,()=>{
+            console.log('Connected to server.')
+        })
+
+        socket.on(EVENTS.WORLD_UPDATE,(worldUpdate)=>{
+            playersUpdate = worldUpdate.playersUpdate;
+            proyectilesUpdate = worldUpdate.proyectilesUpdate;
+            powerUpsUpdate = worldUpdate.powerUpsUpdate;
+            scoresUpdate = worldUpdate.scoresUpdate;
+        })
+
+        socket.on(EVENTS.ADD_PLAYER,(newPlayerData)=>{
+            renderer.addPlayer(this,newPlayerData)
+        })
+
+        socket.on(EVENTS.REMOVE_PLAYER,(playerId)=>{
+            renderer.removePlayer(playerId)
+        })
+
+        socket.on(EVENTS.RESYNC,(updatedMap,updatedPlayers)=>{
+            renderer.createMap(this,updatedMap);
+            renderer.resyncPlayers(this,updatedPlayers);
+        });
+        
+        //INITIAL SYNC
+        socket.emit(EVENTS.RESYNC,{
+            resyncMap:true,
+            resyncPlayers:true,
+            resyncProyectiles:true,
+            resyncPowerUps:true,
+            resyncScores:true,
+        });    
+    }
+
+    //Phaser update function.
+    function update (){
+        //Update players, proyectiles and powerUps
+        resyncPlayers = renderer.updatePlayers(playersUpdate);
+        renderer.updateProyectiles(this,proyectilesUpdate);
+        renderer.updatePowerUps(this,powerUpsUpdate);
+
+        if(resyncPlayers){
+            socket.emit(EVENTS.RESYNC,{
+                resyncPlayers:resyncPlayers,
+            });
+            resyncPlayers = false;
+        }
+    }  
+
+    </script>
+</body>
+</html>
