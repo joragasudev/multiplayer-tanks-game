@@ -1,6 +1,6 @@
 
 # Multiplayer tanks game
-A tiny multiplayer game inspired by Battle City. It is built with `Node.js`, `Express`, and `Socket.io` on the server side, and utilizes the `Phaser 3` game library on the client side.
+A tiny multiplayer game inspired by Battle City. Built with `Node.js`, `Express`, and `Socket.io` on the server side, and uses `Phaser 3` game library on the client side.
 
 Players can use their mobile phones as a joystick or simply use the keyboard to play.
 
